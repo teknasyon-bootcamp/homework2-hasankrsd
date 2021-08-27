@@ -1,5 +1,10 @@
 <?php
-
+//Bu alanda direkt fonksiyon.php çalıştırmak istenirse diye güvenlik önemi oluşturuluyor
+$actual_link =  substr($_SERVER["REQUEST_URI"],1);//dosya adı çekiliyor ve çıktının başında ki / işareti substr ile kaldırılıyor
+if ($actual_link=="functions.php") {
+echo "Hatalı işlem girişi!";
+exit();
+}
 /**
  * functions.php
  *
@@ -48,4 +53,6 @@ EOT;
 }
 
 // Aşağıya fonksiyonu tanımlayabilirsiniz.
-
+function getRandomPostCount($min,$max){ // posts sayfası için istenilen rastgele sayı üretme fonksiyonu oluşturuyoruz.
+    return rand($min, $max);
+} 
