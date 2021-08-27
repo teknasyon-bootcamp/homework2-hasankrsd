@@ -1,3 +1,4 @@
+  
 <?php
 
 /**
@@ -18,5 +19,22 @@
  * - Elde ettiğiniz bu sayıyı da kullanarak `getLatestPosts` fonksiyonunu
  * çalıştırmalısınız. Bu fonksiyondan aldığınız diziyi kullanarak `post.php` betik
  * dosyasını döngü içinde dahil etmeli ve her yazı için detayları göstermelisiniz.
- */
+ */ 
 
+  // Önce function.php dosyasını dahil ediyoruz.
+  
+require_once("functions.php");
+
+$randomNumber= getRandomPostCount(1,1000); //1 ile 1000 arasında rastgele sayı değeri üretir.
+$randomPosts=getLatestPosts($randomNumber); // elde edilen sayıyı getlatestpost fonksiyonuna atama yapılır.
+
+
+//post.php'deki değerler döngü ile çekilir ve ekrana yazıdılırç
+foreach ($randomPosts as $id => $value) {
+    //post.php dahil edildi
+include "post.php";
+
+echo "id:".$id." title:".$value['title']." type:".$value['type']."<br>";
+
+
+}
